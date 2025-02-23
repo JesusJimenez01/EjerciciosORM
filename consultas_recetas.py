@@ -150,10 +150,7 @@ horarios_am = RestaurantConfig.objects.filter(settings__opening_hours__weekends_
 
 # 6.5 Encuentra configuraciones que ofrezcan más de dos servicios.
 """ En sqlite no funciona __len así que he probado a buscar que el indice 2 de settings no esté vacío lo que significaría que hay más de 2 servicios y me funciona.
-__len si funciona con Postgres """
+__len debería funcionar con Postgres """
 # varios_servicios = RestaurantConfig.objects.filter(settings__services__len__gt=2)
 
 varios_servicios = RestaurantConfig.objects.filter(settings__services__2__isnull=False)
-
-lista = list(varios_servicios)
-print(lista)
