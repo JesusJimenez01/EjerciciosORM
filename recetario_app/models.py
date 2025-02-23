@@ -24,3 +24,12 @@ class Restaurant(models.Model):
 
     def __str__(self):
         return self.name
+
+class RecipeStats(models.Model):
+    recipe = models.OneToOneField(Recipe, on_delete=models.CASCADE)
+    total_orders = models.IntegerField()
+    positive_reviews = models.IntegerField()
+
+class RestaurantConfig(models.Model):
+    restaurant = models.OneToOneField(Restaurant, on_delete=models.CASCADE)
+    settings = models.JSONField()
